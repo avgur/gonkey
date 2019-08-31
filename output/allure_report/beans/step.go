@@ -9,9 +9,9 @@ func NewStep(name string, start time.Time) *Step {
 	test.Name = name
 
 	if !start.IsZero() {
-		test.Start = start.UnixNano() / 1000
+		test.Start = start.Unix()
 	} else {
-		test.Start = time.Now().UnixNano() / 1000
+		test.Start = time.Now().Unix()
 	}
 
 	return test
@@ -30,9 +30,9 @@ type Step struct {
 
 func (s *Step) End(status string, end time.Time) {
 	if !end.IsZero() {
-		s.Stop = end.UnixNano() / 1000
+		s.Stop = end.Unix()
 	} else {
-		s.Stop = time.Now().UnixNano() / 1000
+		s.Stop = time.Now().Unix()
 	}
 	s.Status = status
 }

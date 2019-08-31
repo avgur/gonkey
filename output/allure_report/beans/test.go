@@ -11,9 +11,9 @@ func NewTestCase(name string, start time.Time) *TestCase {
 	test.Name = name
 
 	if !start.IsZero() {
-		test.Start = start.UnixNano() / 1000
+		test.Start = start.Unix()
 	} else {
-		test.Start = time.Now().UnixNano() / 1000
+		test.Start = time.Now().Unix()
 	}
 
 	return test
@@ -66,9 +66,9 @@ func (t *TestCase) AddAttachment(attach *Attachment) {
 
 func (t *TestCase) End(status string, err error, end time.Time) {
 	if !end.IsZero() {
-		t.Stop = end.UnixNano() / 1000
+		t.Stop = end.Unix()
 	} else {
-		t.Stop = time.Now().UnixNano() / 1000
+		t.Stop = time.Now().Unix()
 	}
 	t.Status = status
 	if err != nil {

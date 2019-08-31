@@ -27,9 +27,9 @@ func NewSuite(name string, start time.Time) *Suite {
 	s.Title = name
 
 	if !start.IsZero() {
-		s.Start = start.UTC().UnixNano() / 1000
+		s.Start = start.UTC().Unix()
 	} else {
-		s.Start = time.Now().UTC().UnixNano() / 1000
+		s.Start = time.Now().UTC().Unix()
 	}
 
 	return s
@@ -39,9 +39,9 @@ func NewSuite(name string, start time.Time) *Suite {
 func (s *Suite) SetEnd(endTime time.Time) {
 	if !endTime.IsZero() {
 		//strict UTC
-		s.End = endTime.UTC().UnixNano() / 1000
+		s.End = endTime.UTC().Unix()
 	} else {
-		s.End = time.Now().UTC().UnixNano() / 1000
+		s.End = time.Now().UTC().Unix()
 	}
 }
 
